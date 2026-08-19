@@ -19,7 +19,7 @@ window.LOVE_STORY = {
     volume: 0.40,
   },
   finalMessage:
-    "Amor, isso tudo foi apenas o que eu lembrei para esta surpresa, porque eu adorei todos os momentos que passamos juntos, mesmo os que eu esqueci de falar aqui, pode ter certeza. Esse é só o nosso terceiro mês, mas ainda temos inúmeros outros capítulos, momentos, viagens, e eu ainda quero viver vários meses e até anos ao seu lado. Você é uma pessoa completamente incrível, que tenho muita sorte de ter como namorada. Gosto muito muito MUITO de você.",
+    "Amor, isso tudo foi apenas o que eu lembrei para esta surpresa, porque eu adorei todos os momentos que passamos juntos, mesmo os que eu esqueci de falar aqui, pode ter certeza. Esse é só o nosso terceiro mês juntos, mas ainda temos inúmeros outros capítulos, momentos, viagens, e eu ainda quero viver vários meses e até anos ao seu lado. Você é uma pessoa completamente incrível, que tenho muita sorte de ter como namorada. Gosto muito muito MUITO de você.",
   photos: [
     {
       src: "assets/photos/BH-primeira.jpeg",
@@ -59,14 +59,14 @@ A gente ainda não sabia, mas enquanto cada um corria atrás do próprio futuro,
 Você lembra melhor do que eu da nossa primeira interação, alguma fala sobre LoL ainda naquele primeiro auditório. Eu confesso que não lembro exatamente da nossa primeira conversa, mas lembro bem de ter te convencido a ir para o karaokê.
 Aquele dia ficou marcado e foi muito importante. Assim como, para mim, também ficou marcado o dia do churrasco do sindicato no clube dos auditores.
 
-Eram para ser momentos simples no meio daquelas conversas do dia a dia, mas eu sentia que ali já existia alguma coisa querendo se aproximar. (Todo mundo já sabia, menos o Thales).`,
+Eram para ser momentos simples no meio daquelas conversas do dia a dia, mas sentíamos que ali já existia alguma coisa querendo se aproximar. (Todo mundo já sabia, menos o Thales).`,
     },
     {
       id: "bh-encontro",
       title: "Viagem para Belo Horizonte",
       place: "Belo Horizonte: Onde Eu Fui Te Buscar",
       mood: "city",
-      text: `No meio de tantas dúvidas e incertezas, em Belo Horizonte, eu fui te buscar.
+      text: `No meio de tantas dúvidas e incertezas se iria dar certo, em Belo Horizonte, eu fui te buscar.
 
 Depois de muito tempo de voo e de Uber, perto das 22h, te vi pela primeira vez após o Curso de Formação. Ali já foi um momento de felicidade, te ver com um sorriso de orelha a orelha depois de muita ansiedade.
 Na grande padaria Dupão, teve nosso primeiro encontro só nós dois, disse minha primeira declaração e aconteceu nosso primeiro beijo. Foi um momento mágico, com vários lembretes de "Jorge, padaria".
@@ -108,7 +108,9 @@ Por que não pedimos uma mantinha de casal mesmo?`,
       mood: "stars",
       text: `Antes mesmo de você vir para Teresina, com um mês de namoro, chegaram flores, chocolate e uma cartinha que eu queria muito ter entregado pessoalmente. Era meu jeito de tentar estar perto, mesmo quando a distância ainda insistia em aparecer. Nesse mesmo tempo, veio mais uma felicidade enorme para a minha vida: tomei posse como auditor no Piauí, consegui a qualidade de vida que eu tanto buscava.
 
-Quando você já estava em Teresina, ganhou mais uma surpresa: uma massagem completa no Buddah SPA para aproveitar a manhã de esposa-troféu enquanto o namorado se matava de trabalhar na Sefaz-PI. "Esse moço faz todas as suas vontades mesmo".`,
+Quando você já estava em Teresina, ganhou mais uma surpresa: uma massagem completa no Buddah SPA para aproveitar a manhã de esposa-troféu enquanto o namorado se matava de trabalhar na Sefaz-PI.
+
+"Esse moço faz todas as suas vontades mesmo".`,
     },
     {
       id: "natal",
@@ -119,7 +121,7 @@ Quando você já estava em Teresina, ganhou mais uma surpresa: uma massagem comp
 
 Teve festa na beira do mar, teve Caicó, com eu provando língua pela primeira vez, teve o camarão do Camarões, eterno rival do Coco Bambu. Além de conhecer seus pais, que são pessoas muito boas e gentis.
 
-Minha primeira passagem por Natal foi curta, mas com memórias para sempre.`,
+Minha primeira passagem por Natal foi curta, mas com lembranças para sempre.`,
     },
     {
       id: "fortaleza",
@@ -139,7 +141,7 @@ Foi muito legal e muito nosso. Rendeu demais, mesmo com o tempo curto.`,
 
 Do começo do nosso namoro pra cá, a cada dia que passa só aumenta a minha certeza de que eu fiz a escolha certa e de que eu quero estar com você. Eu adoro nosso convívio leve e sincero. A gente se dá bem demais, combinamos muito! Eu quero sempre te dar o meu carinho, o meu cuidado, a minha atenção, te trazer segurança, de ser uma parte feliz do seu dia a dia e tenho a vontade real de construir algo verdadeiro com você.
 
-O presente está sendo ótimo e, quebrando a barreira da distância, nosso futuro juntos é ainda mais promissor.`,
+Os dias presentes estão sendo perfeitos e, quebrando a barreira da distância, nosso futuro juntos é ainda mais promissor.`,
     },
   ],
 };

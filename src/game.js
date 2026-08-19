@@ -1013,8 +1013,10 @@
     else if (value < 100) ui.loveReaction.textContent = "Ainda pode aumentar um pouquinho, né amor?";
     else if (value === 100) ui.loveReaction.textContent = "100 é bom, mas a escala permite quebrar os limites.";
     else if (value < 500) ui.loveReaction.textContent = "To começando a gostar, minha princesa.";
-    else if (value < 1000) ui.loveReaction.textContent = "Agora sim: a escala está começando a entender a grandeza.";
-    else ui.loveReaction.textContent = "1000! Escala quebrada com sucesso, na minha escala também marquei 1000 para você!\n\nSe gostou da surpresa, me manda a figurinha do personagem jogável desse jogo: o Ratinho Gorducho.";
+    else if (value < 1000) ui.loveReaction.textContent = "Agora sim: a escala tá começando a entender a grandeza.";
+    else ui.loveReaction.textContent = `1000! Escala quebrada com sucesso, na minha escala também marquei 1000 para você!
+
+Se gostou da surpresa, me manda a figurinha do personagem jogável desse jogo: o Ratinho Gorducho.`;
   }
 
   function restart() {
