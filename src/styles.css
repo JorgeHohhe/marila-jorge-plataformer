@@ -30,6 +30,7 @@ body {
   color: var(--text);
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   overflow-x: hidden;
+  overscroll-behavior: none;
 }
 
 body::before,
@@ -492,25 +493,104 @@ h2 {
 
 .touch-controls {
   position: absolute;
-  left: 18px;
-  right: 18px;
-  bottom: 18px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 3;
   display: none;
+  align-items: flex-end;
   justify-content: space-between;
+  pointer-events: none;
+  touch-action: none;
+  user-select: none;
+}
+
+.action-pad {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  pointer-events: auto;
+}
+
+.touch-action-button,
+.move-stick {
+  pointer-events: auto;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(4, 7, 18, 0.58);
+  color: var(--text);
+  font-weight: 900;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 16px 46px rgba(0, 0, 0, 0.28);
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.touch-action-button {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  font-size: 1.7rem;
+}
+
+.jump-button {
+  width: 82px;
+  height: 82px;
+  background: rgba(255, 217, 143, 0.2);
+  color: var(--gold);
+}
+
+.interact-button {
+  background: rgba(255, 155, 210, 0.18);
+  color: var(--pink);
+}
+
+.move-stick {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08) 0 30%, transparent 31%),
+    rgba(4, 7, 18, 0.54);
+}
+
+.move-stick::before,
+.move-stick::after {
+  content: "";
+  position: absolute;
+  background: rgba(247, 243, 255, 0.24);
+  border-radius: 999px;
   pointer-events: none;
 }
 
-.touch-controls button {
-  pointer-events: auto;
-  width: 54px;
-  height: 54px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 20px;
-  background: rgba(4, 7, 18, 0.58);
-  color: var(--text);
-  font-size: 1.35rem;
-  font-weight: 900;
-  backdrop-filter: blur(12px);
+.move-stick::before {
+  left: 18px;
+  right: 18px;
+  top: 50%;
+  height: 2px;
+}
+
+.move-stick::after {
+  top: 18px;
+  bottom: 18px;
+  left: 50%;
+  width: 2px;
+}
+
+.move-knob {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 217, 143, 0.86), rgba(140, 238, 255, 0.78));
+  box-shadow: 0 0 28px rgba(140, 238, 255, 0.24);
+  transform: translate(0, 0);
 }
 
 @keyframes driftStars {
@@ -582,11 +662,149 @@ h2 {
     font-size: 0.9rem;
   }
 
+  .dialog-box {
+    padding: 18px;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  #gameCanvas {
+    touch-action: none;
+  }
+
   .touch-controls {
     display: flex;
   }
+}
 
-  .dialog-box {
-    padding: 18px;
+@media (hover: none) and (pointer: coarse) and (orientation: landscape) and (max-height: 560px) {
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body::before,
+  body::after {
+    display: none;
+  }
+
+  .app-shell {
+    width: 100vw;
+    height: 100dvh;
+    padding: 0;
+  }
+
+  .topbar {
+    display: none;
+  }
+
+  .game-layout,
+  .stage-card {
+    width: 100vw;
+    height: 100dvh;
+  }
+
+  .stage-card {
+    min-height: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  #gameCanvas {
+    width: 100vw;
+    height: 100dvh;
+    max-height: none;
+    min-height: 0;
+  }
+
+  .hud {
+    top: max(8px, env(safe-area-inset-top));
+    left: max(10px, env(safe-area-inset-left));
+    right: max(10px, env(safe-area-inset-right));
+    gap: 10px;
+  }
+
+  .hud > div {
+    max-width: 44vw;
+    padding: 7px 10px;
+    border-radius: 14px;
+  }
+
+  .hud strong {
+    max-width: 38vw;
+    overflow: hidden;
+    font-size: 0.82rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .hud-label {
+    font-size: 0.56rem;
+  }
+
+  .sound-toggle {
+    top: max(48px, calc(env(safe-area-inset-top) + 42px));
+    right: max(10px, env(safe-area-inset-right));
+    min-width: 92px;
+    padding: 8px 10px;
+    font-size: 0.78rem;
+  }
+
+  .touch-controls {
+    left: max(18px, calc(env(safe-area-inset-left) + 10px));
+    right: max(18px, calc(env(safe-area-inset-right) + 10px));
+    bottom: max(14px, calc(env(safe-area-inset-bottom) + 8px));
+  }
+
+  .touch-action-button {
+    width: 62px;
+    height: 62px;
+    font-size: 1.45rem;
+  }
+
+  .jump-button {
+    width: 74px;
+    height: 74px;
+  }
+
+  .move-stick {
+    width: 116px;
+    height: 116px;
+  }
+
+  .move-knob {
+    width: 50px;
+    height: 50px;
+    margin: -25px 0 0 -25px;
+  }
+
+  .dialog-overlay,
+  .overlay {
+    padding: 10px;
+  }
+
+  .dialog-box,
+  .modal {
+    max-height: calc(100dvh - 20px);
+    overflow: auto;
+    padding: 16px;
+    border-radius: 22px;
+  }
+
+  .dialog-box h2,
+  .modal h2 {
+    font-size: 1.35rem;
+  }
+
+  .dialog-box p,
+  .modal p {
+    font-size: 0.9rem;
+    line-height: 1.48;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

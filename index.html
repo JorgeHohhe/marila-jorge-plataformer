@@ -57,10 +57,14 @@
           <ol id="chapterList" class="chapter-list" hidden></ol>
 
           <div class="touch-controls" aria-label="Controles para celular">
-            <button id="btnLeft" type="button" aria-label="Mover para esquerda">←</button>
-            <button id="btnRight" type="button" aria-label="Mover para direita">→</button>
-            <button id="btnJump" type="button" aria-label="Pular">⤒</button>
-            <button id="btnInteract" type="button" aria-label="Interagir">✦</button>
+            <div class="action-pad" aria-label="Ações">
+              <button id="btnJump" type="button" class="touch-action-button jump-button" aria-label="Pular">⤒</button>
+              <button id="btnInteract" type="button" class="touch-action-button interact-button" aria-label="Interagir">✦</button>
+            </div>
+
+            <div id="moveStick" class="move-stick" role="application" aria-label="Analógico de movimento">
+              <div id="moveKnob" class="move-knob" aria-hidden="true"></div>
+            </div>
           </div>
         </section>
       </main>

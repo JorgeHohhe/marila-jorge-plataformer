@@ -30,10 +30,10 @@
     loveReaction: document.getElementById("loveReaction"),
     restartGame: document.getElementById("restartGame"),
     toggleAudio: document.getElementById("toggleAudio"),
-    btnLeft: document.getElementById("btnLeft"),
-    btnRight: document.getElementById("btnRight"),
     btnJump: document.getElementById("btnJump"),
     btnInteract: document.getElementById("btnInteract"),
+    moveStick: document.getElementById("moveStick"),
+    moveKnob: document.getElementById("moveKnob"),
   };
 
   const W = canvas.width;
@@ -90,6 +90,11 @@
     nearbyLockedDoor: null,
     nearFinalPortal: false,
     hint: "",
+  };
+
+  const touchInput = {
+    axisX: 0,
+    pointerId: null,
   };
 
   const roomLayouts = [
@@ -352,22 +357,69 @@
     ui.loveRange.addEventListener("input", updateLoveReaction);
     updateLoveReaction();
 
-    addHoldButton(ui.btnLeft, "arrowleft");
-    addHoldButton(ui.btnRight, "arrowright");
-    addHoldButton(ui.btnJump, "jump");
-    addHoldButton(ui.btnInteract, "interact");
+    bindJoystick();
+    addTouchActionButton(ui.btnJump, jump);
+    addTouchActionButton(ui.btnInteract, interact);
   }
 
-  function addHoldButton(button, action) {
+  function bindJoystick() {
+    const start = (event) => {
+      if (touchInput.pointerId !== null) return;
+      event.preventDefault();
+      touchInput.pointerId = event.pointerId;
+      ui.moveStick.setPointerCapture?.(event.pointerId);
+      updateJoystick(event);
+    };
+
+    const move = (event) => {
+      if (event.pointerId !== touchInput.pointerId) return;
+      event.preventDefault();
+      updateJoystick(event);
+    };
+
+    const end = (event) => {
+      if (event.pointerId !== touchInput.pointerId) return;
+      event.preventDefault();
+      ui.moveStick.releasePointerCapture?.(event.pointerId);
+      resetJoystick();
+    };
+
+    ui.moveStick.addEventListener("pointerdown", start);
+    ui.moveStick.addEventListener("pointermove", move);
+    ui.moveStick.addEventListener("pointerup", end);
+    ui.moveStick.addEventListener("pointercancel", end);
+  }
+
+  function updateJoystick(event) {
+    const rect = ui.moveStick.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const radius = Math.min(rect.width, rect.height) * 0.36;
+    const rawX = event.clientX - centerX;
+    const rawY = event.clientY - centerY;
+    const distance = Math.hypot(rawX, rawY);
+    const limit = distance > radius ? radius / distance : 1;
+    const knobX = rawX * limit;
+    const knobY = rawY * limit;
+    const axisX = knobX / radius;
+
+    touchInput.axisX = Math.abs(axisX) < 0.18 ? 0 : axisX;
+    ui.moveKnob.style.transform = `translate(${knobX}px, ${knobY}px)`;
+  }
+
+  function resetJoystick() {
+    touchInput.axisX = 0;
+    touchInput.pointerId = null;
+    ui.moveKnob.style.transform = "translate(0, 0)";
+  }
+
+  function addTouchActionButton(button, action) {
     const press = (event) => {
       event.preventDefault();
-      if (action === "jump") jump();
-      else if (action === "interact") interact();
-      else keys.add(action);
+      action();
     };
     const release = (event) => {
       event.preventDefault();
-      if (action !== "jump" && action !== "interact") keys.delete(action);
     };
     button.addEventListener("pointerdown", press);
     button.addEventListener("pointerup", release);
@@ -392,18 +444,19 @@
   }
 
   function update(dt) {
-    const left = keys.has("a") || keys.has("arrowleft");
-    const right = keys.has("d") || keys.has("arrowright");
+    const keyboardAxis =
+      (keys.has("d") || keys.has("arrowright") ? 1 : 0) -
+      (keys.has("a") || keys.has("arrowleft") ? 1 : 0);
+    const moveAxis = Math.abs(touchInput.axisX) > Math.abs(keyboardAxis)
+      ? touchInput.axisX
+      : keyboardAxis;
 
-    if (left) {
-      player.vx -= 0.76 * dt;
-      player.facing = -1;
+    if (moveAxis !== 0) {
+      player.vx += 0.76 * moveAxis * dt;
+      player.facing = moveAxis < 0 ? -1 : 1;
+    } else {
+      player.vx *= friction;
     }
-    if (right) {
-      player.vx += 0.76 * dt;
-      player.facing = 1;
-    }
-    if (!left && !right) player.vx *= friction;
 
     player.vx = clamp(player.vx, -maxSpeed, maxSpeed);
     player.vy += gravity * dt;
