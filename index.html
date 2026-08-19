@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101427" />
+    <meta
+      name="description"
+      content="Marila & Jorge: 3 meses da nossa história — um pequeno jogo plataforma romântico."
+    />
+    <title>Marila & Jorge: 3 meses da nossa história</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <header class="topbar" aria-label="Cabeçalho do jogo">
+        <div>
+          <p class="eyebrow">Um presentinho jogável</p>
+          <h1 id="gameTitle">Marila & Jorge: 3 meses da nossa história</h1>
+        </div>
+        <div class="counter-card" aria-live="polite">
+          <span>Estamos juntos há</span>
+          <strong id="loveCounter">carregando...</strong>
+        </div>
+      </header>
+
+      <main class="game-layout">
+        <section class="stage-card" aria-label="Jogo plataforma">
+          <canvas id="gameCanvas" width="960" height="540">
+            Seu navegador precisa suportar canvas para rodar o jogo.
+          </canvas>
+          <div class="hud">
+            <div>
+              <span class="hud-label">Capítulo</span>
+              <strong id="chapterHud">Antes de tudo começar</strong>
+            </div>
+            <div>
+              <span class="hud-label">Memórias</span>
+              <strong><span id="memoryHud">0</span>/<span id="memoryTotalHud">0</span></strong>
+            </div>
+          </div>
+          <button
+            id="toggleAudio"
+            type="button"
+            class="sound-toggle"
+            aria-pressed="true"
+            aria-label="Desligar trilha sonora"
+          >
+            Som ligado
+          </button>
+          <ol id="chapterList" class="chapter-list" hidden></ol>
+
+          <div class="touch-controls" aria-label="Controles para celular">
+            <button id="btnLeft" type="button" aria-label="Mover para esquerda">←</button>
+            <button id="btnRight" type="button" aria-label="Mover para direita">→</button>
+            <button id="btnJump" type="button" aria-label="Pular">⤒</button>
+            <button id="btnInteract" type="button" aria-label="Interagir">✦</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <section id="startScreen" class="overlay visible" aria-label="Tela inicial">
+      <div class="modal start-modal">
+        <p class="eyebrow">Jorge preparou uma surpresa</p>
+        <h2>Marila & Jorge:<br />3 meses da nossa história</h2>
+        <p>
+          Uma caminhada por memórias, encontros, cidades e escolhas. Colete as luzes para revelar
+          cada pedacinho da nossa história.
+        </p>
+        <button id="startButton" type="button" class="primary-button">Começar a nossa jornada</button>
+      </div>
+    </section>
+
+    <section id="dialogOverlay" class="dialog-overlay" aria-label="Diálogo da memória" hidden>
+      <div class="dialog-box">
+        <div class="dialog-header">
+          <span id="dialogChapter">Capítulo</span>
+          <button id="closeDialog" type="button" aria-label="Fechar diálogo">×</button>
+        </div>
+        <h2 id="dialogTitle">Título</h2>
+        <p id="dialogText"></p>
+        <div class="dialog-actions">
+          <button id="prevDialog" type="button" class="secondary-button">Voltar</button>
+          <button id="nextDialog" type="button" class="primary-button">Continuar</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="galleryOverlay" class="overlay" aria-label="Galeria de fotos" hidden>
+      <div class="modal gallery-modal">
+        <button id="closeGallery" type="button" class="close-floating" aria-label="Fechar galeria">×</button>
+        <p class="eyebrow">Galeria de fotos</p>
+        <h2>Por fim, alguns retratos da nossa história para guardar nosso relacionamento como quem guarda um tesouro</h2>
+        <div id="galleryGrid" class="gallery-grid"></div>
+        <button id="openFinal" type="button" class="primary-button">Continuar para o final</button>
+      </div>
+    </section>
+
+    <section id="finalOverlay" class="overlay" aria-label="Mensagem final" hidden>
+      <div class="modal final-modal">
+        <p class="eyebrow">Escala</p>
+        <h2>Esse é só o nosso terceiro mês.</h2>
+        <p id="finalMessage"></p>
+
+        <label class="love-meter" for="loveRange">
+          <span>Coloque o quanto você gosta de mim:</span>
+          <strong id="loveValue">100</strong>
+        </label>
+        <input id="loveRange" type="range" min="0" max="1000" value="100" />
+        <p id="loveReaction" class="reaction">A escala já começou pequena demais.</p>
+        <button id="restartGame" type="button" class="secondary-button">Quer jogar novamente?</button>
+      </div>
+    </section>
+
+    <script src="src/config.js"></script>
+    <script src="src/audio.js"></script>
+    <script src="src/game.js"></script>
+  </body>
+</html>
