@@ -38,6 +38,7 @@
 
   const W = canvas.width;
   const H = canvas.height;
+  const maxCanvasPixelRatio = 2;
   const zoneLength = 1320;
   const worldWidth = story.chapters.length * zoneLength + 420;
   const gravity = 0.72;
@@ -182,6 +183,7 @@
   ];
 
   function init() {
+    syncCanvasResolution();
     ui.gameTitle.textContent = story.title;
     ui.finalMessage.textContent = story.finalMessage;
     buildWorld();
@@ -191,7 +193,23 @@
     updateCounter();
     setInterval(updateCounter, 1000);
     bindEvents();
+    window.addEventListener("resize", syncCanvasResolution);
+    window.addEventListener("orientationchange", () => window.setTimeout(syncCanvasResolution, 160));
     requestAnimationFrame(loop);
+  }
+
+  function syncCanvasResolution() {
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, maxCanvasPixelRatio);
+    const targetWidth = Math.round(W * pixelRatio);
+    const targetHeight = Math.round(H * pixelRatio);
+
+    if (canvas.width !== targetWidth || canvas.height !== targetHeight) {
+      canvas.width = targetWidth;
+      canvas.height = targetHeight;
+    }
+
+    ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    ctx.imageSmoothingEnabled = true;
   }
 
   function buildWorld() {
@@ -562,8 +580,8 @@
       if (distance < 92) {
         state.nearbyMemory = memory;
         state.hint = collected.has(memory.id)
-          ? "Pressione E para rever esta memória."
-          : "Pressione E para abrir esta memória.";
+          ? "Pressione para rever esta memória."
+          : "Pressione para abrir esta memória.";
         return;
       }
     }
@@ -583,7 +601,7 @@
     if (Math.hypot(centerX(player) - portalX, centerY(player) - portalY) < 120) {
       state.nearFinalPortal = true;
       state.hint = collected.size >= memories.length
-        ? "Pressione E para abrir a galeria de fotos."
+        ? "Pressione para abrir a galeria de fotos."
         : "A galeria espera pelas luzes que ainda faltam.";
     }
   }
@@ -666,6 +684,7 @@
   }
 
   function draw() {
+    syncCanvasResolution();
     const chapterIndex = getCurrentChapterIndex();
     const chapter = story.chapters[chapterIndex];
     const palette = moodPalettes[chapter.mood] || moodPalettes.stars;
