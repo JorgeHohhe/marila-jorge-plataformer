@@ -1087,7 +1087,7 @@
     const value = Number(ui.loveRange.value);
     ui.loveValue.textContent = String(value);
     if (value === 0) ui.loveReaction.textContent = "Zero? O jogo detectou brincadeira e vai pedir revisão imediata. Rum!";
-    else if (value < 100) ui.loveReaction.textContent = "Ainda pode aumentar um pouquinho, né amor?";
+    else if (value < 100) ui.loveReaction.textContent = "Pode aumentar um pouquinho, né amor?";
     else if (value === 100) ui.loveReaction.textContent = "100 é bom, mas a escala permite quebrar os limites.";
     else if (value < 500) ui.loveReaction.textContent = "To começando a gostar, minha princesa.";
     else if (value < 1000) ui.loveReaction.textContent = "Agora sim: a escala tá começando a entender a grandeza.";

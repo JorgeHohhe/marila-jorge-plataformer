@@ -19,7 +19,7 @@ window.LOVE_STORY = {
     volume: 0.40,
   },
   finalMessage:
-    "Amor, isso tudo foi apenas o que eu lembrei para esta surpresa, porque eu adorei todos os momentos que passamos juntos, mesmo os que eu esqueci de falar aqui, pode ter certeza. Esse é só o nosso terceiro mês juntos, mas ainda temos inúmeros outros capítulos, momentos, viagens, e eu ainda quero viver vários meses e até anos ao seu lado. Você é uma pessoa completamente incrível, que tenho muita sorte de ter como namorada. Gosto muito muito MUITO de você.",
+    "Amor, isso tudo foi apenas o que eu lembrei para esta surpresa, porque eu adorei todos os momentos que passamos juntos, mesmo os que eu esqueci de falar aqui, pode ter certeza. Esse é só o nosso terceiro mês juntos, ainda temos inúmeros outros capítulos, momentos, viagens, histórias, e eu ainda quero viver vários meses e até anos ao seu lado, escrevendo cada detalhe da nossa convivência na minha e na nossa memória. Você é uma pessoa completamente incrível, que tenho muita sorte de ter como namorada, quero estar ao seu lado. Gosto muito muito MUITO de você.",
   photos: [
     {
       src: "assets/photos/BH-primeira.jpeg",
@@ -99,7 +99,7 @@ No meio desses lugares, comidas e cafés da manhã preparados com todo o carinho
 
 Foi onde conheci sua tia, Liana, e seus avós, Cleide e Carlos, no sítio mais bonito que eu já vi na minha vida, em uma atmosfera de paz suprema. Vivi um pedacinho da sua família, conhecer quem fez parte da sua história também foi uma forma de me aproximar ainda mais do seu mundo.
 
-Por que não pedimos uma mantinha de casal mesmo?`,
+Além disso, passamos o Dia dos Namorados juntos. Por que não pedimos uma mantinha de casal mesmo?`,
     },
     {
       id: "teresina-de-novo",
@@ -139,7 +139,7 @@ Foi muito legal e muito nosso. Rendeu demais, mesmo com o tempo curto.`,
       mood: "city",
       text: `Agora meu amorzinho vai me ver ficando mais velho. E, pelo visto, também vai continuar dizendo que meu tempo acabou. Mas se o tempo vai acabar, que bom que vai ser assim: com você perto, rindo de mim e convivendo comigo.
 
-Do começo do nosso namoro pra cá, a cada dia que passa só aumenta a minha certeza de que eu fiz a escolha certa e de que eu quero estar com você. Eu adoro nosso convívio leve e sincero. A gente se dá bem demais, combinamos muito! Eu quero sempre te dar o meu carinho, o meu cuidado, a minha atenção, te trazer segurança, de ser uma parte feliz do seu dia a dia e tenho a vontade real de construir algo verdadeiro com você.
+Do começo do nosso namoro pra cá, a cada dia que passa só aumenta a minha certeza de que eu fiz a escolha certa. Eu adoro nosso convívio leve e sincero. A gente se dá bem demais, somos um casalzão e combinamos muito! Eu quero sempre te dar o meu carinho, o meu cuidado, a minha atenção, te trazer segurança, de ser uma parte feliz da sua rotina e tenho a vontade real de construir algo verdadeiro com você.
 
 Os dias presentes estão sendo perfeitos e, quebrando a barreira da distância, nosso futuro juntos é ainda mais promissor.`,
     },
