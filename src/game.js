@@ -683,6 +683,11 @@
     }, 240);
   }
 
+  function forceHideOverlay(element) {
+    element.classList.remove("visible");
+    element.hidden = true;
+  }
+
   function draw() {
     syncCanvasResolution();
     const chapterIndex = getCurrentChapterIndex();
@@ -1099,8 +1104,17 @@ Se gostou da surpresa, me manda a figurinha do personagem jogável desse jogo: o
     player.vy = 0;
     state.cameraX = 0;
     state.hint = "";
+    state.activeMemory = null;
+    state.nearbyMemory = null;
+    state.nearbyLockedDoor = null;
+    state.nearFinalPortal = false;
+    state.dialogTextComplete = false;
     state.paused = false;
-    hideOverlay(ui.finalOverlay);
+    document.querySelector(".heart-burst")?.remove();
+    resetJoystick();
+    forceHideOverlay(ui.dialogOverlay);
+    forceHideOverlay(ui.galleryOverlay);
+    forceHideOverlay(ui.finalOverlay);
     updateHud();
   }
 

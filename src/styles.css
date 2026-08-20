@@ -670,11 +670,7 @@ h2 {
 
 @media (hover: none) and (pointer: coarse) {
   #gameCanvas {
-    touch-action: none;
-  }
-
-  .touch-controls {
-    display: flex;
+    touch-action: pan-y;
   }
 }
 
@@ -722,6 +718,7 @@ h2 {
     max-height: none;
     max-width: 100vw;
     min-height: 0;
+    touch-action: none;
   }
 
   .hud {
@@ -758,6 +755,7 @@ h2 {
   }
 
   .touch-controls {
+    display: flex;
     left: max(18px, calc(env(safe-area-inset-left) + 10px));
     right: max(18px, calc(env(safe-area-inset-right) + 10px));
     bottom: max(14px, calc(env(safe-area-inset-bottom) + 8px));
